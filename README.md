@@ -1,24 +1,19 @@
-# README
+# Document register project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### To start  run:
 
-Things you may want to cover:
+bundler install
 
-* Ruby version
+yarn install --check-files
 
-* System dependencies
+rake db:create
 
-* Configuration
+rake db:migrate
 
-* Database creation
+rails s
 
-* Database initialization
+### TODO:
 
-* How to run the test suite
+- view visual improvements
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- better test coverage - include file attachemt tests in Documents module

@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Document title 1
+  description: MyText
+  user_id: 1
+
+two:
+  name: Document title 2
+  user_id: 2

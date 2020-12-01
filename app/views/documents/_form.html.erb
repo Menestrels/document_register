@@ -1,0 +1,47 @@
+<%= form_with(model: document, local: true) do |form| %>
+  <% if document.errors.any? %>
+
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</p>
+      </div>
+
+      <div class="message-body">
+        <ul>
+          <% document.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, class: "input"  %>
+  </div>
+
+  <div class='field'>
+    <% if @document.files.present? %>
+      <p class="label">Currently uploaded files (check to delete):</p>
+      <% @document.files.each do |file| %>
+        <%= form.check_box :file_ids, {multiple: true}, file.id, false %>
+        <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class='field'> 
+    <p class="label">Add new files:</p>
+    <%= form.file_field :files, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button is-success"%>
+  </div>
+<% end %>

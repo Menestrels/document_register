@@ -1,0 +1,30 @@
+<div class="columns mt-6 is-centered">
+  <div class="column">
+    <nav class="panel">
+
+      <p class="panel-heading">
+        <%= @document.name %>
+      </p>
+
+      <div class="panel-block">
+        <strong>Description:</strong>
+        <%= @document.description %>
+      </div>
+
+      <div class="panel-block">
+        <strong>Files:</strong>
+        <% @document.files.each do |file| %>
+          <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+        <% end %> 
+      </div>
+    </nav>
+
+    <div class="columns">
+      <div class="column">
+        <%= link_to 'Edit', edit_document_path(@document), class: "button is-gray" %>
+        <%= link_to 'Delete', @document, method: :delete, data: { confirm: 'Do you really want to delete the document?' }, class: "button is-danger" %>
+      </div>
+    </div>
+
+  </div>
+</div>
